@@ -45,7 +45,7 @@ body {
   }
   
   .card {
-    width: 400px;
+    width: 350px;
     height: 200px;
     perspective: 10000px;
   }
