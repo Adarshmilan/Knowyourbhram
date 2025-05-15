@@ -12,9 +12,10 @@ body {
   
   .mainbody {
     text-align: center;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    box-sizing: border-box;
     margin: 40px 60px;
     padding: 40px 20px;
     border: rgba(255, 255, 255, 0.4) 2px solid;
@@ -34,10 +35,59 @@ body {
     margin-bottom: 40px;
     color: #ffffff;
   }
-  
+
+/* for catogary */
+
+.catogory{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-left: 80px;
+  /* background-image: linear-gradient(to right, #121F3D, #1E3A8A); */
+}
+
+.buto{
+  background-color: transparent ;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 1.2em;
+  transition-duration: 0.4s;
+
+}
+.buto:hover{
+  transform: translateY(-6px);
+  cursor: pointer;
+}
+
+.buto.active{
+  background-color: #ffffff;
+  color: white;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  border: white 1px solid;  
+}
+
+#phy{
+  background-image: linear-gradient(to right, rgb(30, 58, 138), rgb(33, 65, 153));
+}
+
+#nurs{
+  background-image: linear-gradient(to right, rgb(33, 65, 153), rgb(36, 70, 164));
+}
+
+#bio{
+  background-image: linear-gradient(to right, rgb(36, 70, 164), rgb(40, 77, 179));
+}
+
+#earth{
+  background-image: linear-gradient(to right, rgb(40, 77, 179), rgb(46, 88, 203));
+}
+/* catogary end */
   /* Card Styles */
   .card-container {
     display: flex;
+    width: 350px;
     margin: none;
     padding: 20px;
     padding-left: 60px;
@@ -45,6 +95,7 @@ body {
   }
   
   .card {
+    box-sizing: border-box;
     width: 350px;
     height: 200px;
     perspective: 10000px;
