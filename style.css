@@ -94,11 +94,6 @@ body {
     
   }
   
-  .card {
-<<<<<<< HEAD
-    box-sizing: border-box;
-=======
->>>>>>> cdc5c49308305ba5266c2983f282677326eeed99
     width: 350px;
     height: 200px;
     perspective: 10000px;
