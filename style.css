@@ -1,40 +1,81 @@
+* {
+  padding: 0%;
+  margin: 0%;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
 
 body {
-    margin: 0;
-    padding: 0;
-    height: auto;
+  margin-top: 25px;
+ 
+  padding: 0;
+  height: auto;
 
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background: radial-gradient(circle at 10% 20%, #1E3A8A 0%, #121F3D 80%);
-    background-repeat: no-repeat;
-    color: white;
-  }
-  
-  .mainbody {
-    text-align: center;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto auto;
-    box-sizing: border-box;
-    margin: 40px 60px;
-    padding: 40px 20px;
-    border: rgba(255, 255, 255, 0.4) 2px solid;
-    border-radius: 10px;
-    height: auto;
-    box-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
-  }
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background: radial-gradient(circle at 10% 20%, #1E3A8A 0%, #121F3D 80%);
+  background-repeat: no-repeat;
+  color: white;
+}
+
+.mainbody {
+  width: in;
+  text-align: center;
+  display: grid;
+  grid-template-columns: auto auto auto ;
+  grid-template-rows: auto ;
+  overflow: hidden;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  justify-content: space-evenly;
+  box-sizing: border-box;
+  margin: 40px 60px;
+  padding: 40px 20px;
+  border: rgba(255, 255, 255, 0.4) 2px solid;
+  border-radius: 10px;
+  height: auto;
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
+}
 .ts{
   font-style: normal;
   color: #FF6B9D;
 
 }
-  .title {
-    padding-top: 0;
-    padding-left: 50px;
-    font-size: 2.4em;
-    margin-bottom: 40px;
-    color: #ffffff;
-  }
+
+.top{
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items:last baseline;
+  margin-bottom: 20px;
+}
+.title {
+  padding-top: 0;
+  padding-left: 50px;
+  font-size: 2.4em;
+  margin-bottom: 40px;
+  color: #ffffff;
+}
+.search-btn{
+  background-color: #FF6B9D;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 1.2em;
+  transition-duration: 0.4s;
+}
+.search-btn:hover{
+  transform: translateY(-6px);
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 107, 157, 0.6);
+}.search-btn:active{
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+.sbton{
+  padding-right: 50px;
+}
 
 /* for catogary */
 
@@ -83,58 +124,64 @@ body {
 #earth{
   background-image: linear-gradient(to right, rgb(40, 77, 179), rgb(46, 88, 203));
 }
+
+#gen{
+  background-image: linear-gradient(to right, rgb(46, 88, 203), rgb(52, 101, 229));
+}
+
 /* catogary end */
   /* Card Styles */
-  .card-container {
-    display: flex;
-    width: 350px;
-    margin: none;
-    padding: 20px;
-    padding-left: 60px;
-    
-  }
+.card-container {
+  display: flex;
+  width: auto;
+  margin: none;
+  padding: 20px;
+  padding-left: 0;
+  overflow: hidden;
   
-  .card {
-    width: 350px;
-    height: 200px;
-    perspective: 10000px;
-  }
-  .card:hover{
-    cursor: pointer;  
-  }
-  
-  .card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.3s cubic-bezier(1, 2, 1, 1);
-    transform-style: preserve-3d;
-  }
-  
-  
-  .card-front,
-  .card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border: rgba(255, 255, 255, 0.2) 1px solid;
-    border-radius: 16px;
-    box-sizing: border-box;
-    padding: 20px;
-    font-size: 1.2em;
-    display: flex;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.0);
-    color: #ffffff;
-    font-size: 1.5rem;
-  }
-  
-  .card-back {
-    background: rgba(255, 255, 255, 0.1);
-    transform: rotateY(180deg);
-  }
-  
+}
+
+.card {
+  width: 350px;
+  height: 200px;
+  perspective: 10000px;
+}
+.card:hover{
+  cursor: pointer;  
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s cubic-bezier(1, 2, 1, 1);
+  transform-style: preserve-3d;
+}
+
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border: rgba(255, 255, 255, 0.2) 1px solid;
+  border-radius: 16px;
+  box-sizing: border-box;
+  padding: 20px;
+  font-size: 1.2em;
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.0);
+  color: #ffffff;
+  font-size: 1.5rem;
+}
+
+.card-back {
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotateY(180deg);
+}
+
 
 /* for footer */
 
