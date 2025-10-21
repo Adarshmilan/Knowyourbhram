@@ -1,26 +1,44 @@
-const chatbox = document.getElementById('chatbox');
-const form = document.getElementById('chat-form');
-const input = document.getElementById('user-input');
+// Example JavaScript for dynamically adding messages
+const chatWindow = document.getElementById('chat-window');
+const userInput = document.getElementById('user-input');
+const sendButton = document.getElementById('send-button');
 
-function botReply(question) {
-    // Simple hardcoded responses
-    const responses = {
-        "hello": "Hi! How can I help you?",
-        "how are you": "I'm a bot, but I'm doing great!",
-        "what is your name": "I'm your friendly chatbot.",
-        "bye": "Goodbye! Have a nice day."
-    };
-    const q = question.trim().toLowerCase();
-    return responses[q] || "Sorry, I don't understand that. Try asking something else!";
+function addMessage(text, sender) {
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add('message', `${sender}-message`);
+    messageDiv.innerHTML = `<p>${text}</p>`;
+    chatWindow.appendChild(messageDiv);
+    chatWindow.scrollTop = chatWindow.scrollHeight; // Auto-scroll to latest message
 }
 
-form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const userText = input.value.trim();
-    if (!userText) return;
-    chatbox.innerHTML += `<div class="myreq myreqin" >${userText}</div>`;
-    const answer = botReply(userText);
-    chatbox.innerHTML += `<div class = "botans" > ${answer}</div>`;
-    chatbox.scrollTop = chatbox.scrollHeight;
-    input.value = '';
+sendButton.addEventListener('click', () => {
+    const message = userInput.value.trim();
+    if (message) {
+        addMessage(message, 'user');
+        userInput.value = ''; // Clear input
+        // Simulate bot response (replace with your actual chatbot logic)
+        setTimeout(() => {
+            if (message.toLowerCase().includes('hello')) {
+                    addMessage("Hi there! How can I assist you today?", 'bot');
+            } else if (message.toLowerCase().includes('time')) {
+                    addMessage(`The current time is ${new Date().toLocaleTimeString()}.`, 'bot');
+            } else if (message.toLowerCase().includes('ui')) {
+                    addMessage("Sure! What kind of UI are you interested in?", 'bot');
+            }
+            else {
+                    addMessage("Sorry, I don't understand that. Try asking something else!", 'bot');
+            }
+        }, 1000);
+    }
 });
+
+userInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        sendButton.click();
+    }
+});
+
+// Add initial welcome message on load if not already present in HTML
+if (chatWindow.children.length === 0) {
+        addMessage("Hello there! I can answer about science and more. What would you like to know?", 'bot');
+}
