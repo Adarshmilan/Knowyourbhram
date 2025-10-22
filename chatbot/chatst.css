@@ -11,7 +11,8 @@ body {
     
     /* background-color: #0d1117; Dark background to make glass effect pop */
     color: #e0e6ed; /* Light grey text for contrast */
-    overflow: hidden; /* Prevent scroll on body if background pattern is larger */
+    /* Avoid forcing overflow:hidden on body (can hide content on small screens) */
+    overflow: auto;
     position: relative;
     box-sizing: border-box; /* Include padding and border in element's total width and height */
 }
@@ -86,6 +87,9 @@ body {
 .chat-window::-webkit-scrollbar-track {
     background: rgba(0, 50, 97, 0.2);
     border-radius: 10px;
+    /* Respect safe area insets on phones with notches */
+    padding-left: calc(20px + env(safe-area-inset-left));
+    padding-right: calc(20px + env(safe-area-inset-right));
 }
 
 .chat-window::-webkit-scrollbar-thumb {

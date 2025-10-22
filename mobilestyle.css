@@ -14,6 +14,11 @@ body {
   text-align: center;
 }
 
+/* Make the top title smaller on medium screens */
+@media (max-width: 900px) {
+  .title { font-size: 1.5em; padding-left: 8px; }
+}
+
 /* Category bar */
 .catogory {
   position: fixed;
@@ -25,10 +30,13 @@ body {
   justify-content: space-around;
   align-items: center;
   gap: 0;
-  padding: 10px 0;
+  padding: 8px 6px;
   margin: 0;
   z-index: 1000;
   box-shadow: 0 -2px 12px rgba(30,58,138,0.2);
+  /* make sure it doesn't overlap content by reserving space */
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
 }
 
 .buto {
@@ -64,29 +72,29 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 10px 0;
-  padding: 10px 0;
+  margin: 18px 18px 110px; /* leave bottom space so fixed bottom nav doesn't cover content */
+  padding: 8px 8px;
   border: none;
   box-shadow: none;
   background: none;
-  padding-bottom: 70px;
+  padding-bottom: 12px;
 }
 
 /* Card container and card */
 .card-container {
-  width: 95vw;
+  width: 100%;
   min-width: 0;
-  max-width: 98vw;
-  padding: 0;
+  max-width: 100%;
+  padding: 0 8px;
   margin: 10px 0;
   display: flex;
   justify-content: center;
 }
 
 .card {
-  width: 95vw;
-  max-width: 350px;
-  height: 180px;
+  width: 100%;
+  max-width: 380px;
+  height: auto;
   min-width: 0;
   perspective: 1000px;
 }
@@ -100,15 +108,79 @@ body {
 .card-front,
 .card-back {
   font-size: 1em;
-  padding: 10px;
+  padding: 12px;
   border-radius: 12px;
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Grid layout for tablets */
+@media (min-width: 701px) and (max-width: 1200px) {
+  .mainbody {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin: 20px 20px 120px;
+  }
+  .card-container { padding: 6px; }
+  .card { max-width: 100%; height: 160px; }
+}
+
+/* Small phones */
+@media (max-width: 700px) {
+  .catogory {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    background: rgba(18, 31, 61, 0.98);
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 6px;
+    margin: 0;
+    z-index: 1000;
+    box-shadow: 0 -2px 12px rgba(30,58,138,0.2);
+  }
+
+  .buto { width: 44px; height: 44px; margin: 0 4px; }
+
+  /* hide text labels on small screens, keep emoji visible */
+  .buto .label { display: none; }
+
+  .mainbody {
+    margin: 12px 10px 100px; /* keep room for fixed nav */
+    padding: 6px;
+  }
+
+  .card-container { width: 100%; padding: 0; margin: 8px 0; }
+
+  .card { height: 140px; border-radius: 12px; overflow: hidden; }
+
+  .card-front, .card-back { font-size: 0.95em; padding: 10px; min-height: 110px; }
+
+  .title { font-size: 1.25em; }
+
+  .top { padding: 8px 10px; }
+}
+
+/* Extra small screens (very narrow) */
+@media (max-width: 360px) {
+  .buto { width: 40px; height: 40px; font-size: 1.2em; }
+  .card { height: 130px; }
+  .card-front, .card-back { font-size: 0.9em; padding: 8px; }
+  .title { font-size: 1.1em; }
 }
 
 /* Footer */
 .footer {
-  margin-top: 40px;
-  margin-bottom: 0;
-  padding: 20px 10px 10px 10px;
+  margin-top: 20px;
+  margin-bottom: 60px;
+  padding: 16px 10px 20px 10px;
   height: auto;
   text-align: center;
   background-color: #121F3D;
