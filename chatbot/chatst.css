@@ -257,6 +257,11 @@ body {
         padding: 10px;
         max-width: unset; /* Remove max-width constraint */
         max-height: unset; /* Remove max-height constraint */
+        /* Make the chat fill the viewport and stay fixed so input is always reachable */
+        position: fixed;
+        inset: 0; /* top:0; right:0; bottom:0; left:0; */
+        display: flex;
+        flex-direction: column;
     }
 
     .chat-header h1 {
@@ -272,17 +277,22 @@ body {
 
     .chat-input-area {
         padding-top: 8px;
+        /* keep input row visible when keyboard opens */
+        z-index: 20;
+        background: rgba(13,22,33,0.65);
+        padding: 10px;
+        border-top: 1px solid rgba(0, 50, 97, 0.25);
     }
 
     .chat-input-area input[type="text"] {
-        padding: 8px 10px;
-        font-size: 0.85em;
-        border-radius: 20px;
+        padding: 12px 14px;
+        font-size: 1rem;
+        border-radius: 22px;
     }
 
     .chat-input-area button {
-        width: 35px;
-        height: 35px;
-        font-size: 0.9em;
+        width: 46px;
+        height: 46px;
+        font-size: 1.05em;
     }
 }
